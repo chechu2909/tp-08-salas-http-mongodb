@@ -1,0 +1,27 @@
+{
+  "name": "tp-06-salas-modular",
+  "version": "1.0.0",
+  "description": "Trabajo práctico 08 - Conexión con MongoDB Atlas y API JSON",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "node src/index.js",
+    "dev": "node src/index.js",
+    "format": "prettier --write src",
+    "format:check": "prettier --check src",
+    "lint": "eslint src",
+    "check": "npm run format:check && npm run lint"
+  },
+  "dependencies": {
+    "dotenv": "^18.0.9",
+    "ejs": "^3.1.9",
+    "express": "^4.19.2",
+    "express-ejs-layouts": "^2.5.1",
+    "mongoose": "^9.11.4",
+    "morgan": "^1.10.0"
+  },
+  "devDependencies": {
+    "@eslint/js": "^10.0.1",
+    "eslint": "^10.13.0",
+    "prettier": "^3.9.10"
+  }
+}

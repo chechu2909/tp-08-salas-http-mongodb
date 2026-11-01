@@ -1,0 +1,24 @@
+<section>
+  <h2><%= seccion %></h2>
+  <p>A continuación se lista el registro actual de turnos reservados:</p>
+
+  <% if (reservas.length === 0) { %>
+    <div class="card">
+      <p>No hay reservas registradas en este momento.</p>
+      <a href="/reservas/nueva" class="btn">Crear la primera reserva</a>
+    </div>
+  <% } else { %>
+    <div class="grid-cards">
+      <% reservas.forEach(reserva => { %>
+        <article class="card">
+          <h3>Sala: <%= reserva.sala %></h3>
+          <p><strong>Estudiante:</strong> <%= reserva.estudiante %></p>
+          <p><strong>Fecha:</strong> <%= reserva.fecha %></p>
+          <p><strong>Turno:</strong> <%= reserva.turno %></p>
+          <p><strong>Personas:</strong> <%= reserva.personas %></p>
+          <a href="/reservas/<%= reserva.id %>" class="btn">Ver detalle</a>
+        </article>
+      <% }) %>
+    </div>
+  <% } %>
+</section>
