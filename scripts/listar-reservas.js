@@ -1,21 +1,29 @@
 const { conectarDB, desconectarDB } = require("../src/config/base-datos");
 const Reserva = require("../src/modelos/reserva");
+
 async function main() {
   try {
     await conectarDB();
 
-    const reservas = await Reserva.find({});
-    console.log(`Cantidad de reservas recuperadas: ${reservas.length}`);
-    reservas.forEach((r, index) => {
-      console.log(
-        `[${index + 1}] ID: ${r._id} | Estudiante: ${r.estudiante} | Sala: ${r.sala} | Turno: ${r.turno} | Personas: ${r.personas}`,
-      );
-    });
+    // Consultar todas las reservas en la base de datos
+    const reservas = await Reserva.find();
+    
+    console.log(`\nSe encontraron ${reservas.length} reserva(s) en la base de datos:`);
+    console.table(reservas.map(r => ({
+      ID: r._id.toString(),
+      Estudiante: r.estudiante,
+      Sala: r.sala,
+      Fecha: r.fecha,
+      Turno: r.turno,
+      Estado: r.estado
+    })));
+
   } catch (error) {
-    console.error("Error al listar reservas:", error.message);
+    console.error("Error al listar las reservas:", error.message);
     process.exit(1);
   } finally {
     await desconectarDB();
+    process.exit(0); // Libera la terminal al terminar
   }
 }
 

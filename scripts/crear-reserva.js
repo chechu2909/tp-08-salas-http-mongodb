@@ -1,5 +1,6 @@
 const { conectarDB, desconectarDB } = require("../src/config/base-datos");
 const Reserva = require("../src/modelos/reserva");
+
 async function main() {
   try {
     await conectarDB();
@@ -23,6 +24,7 @@ async function main() {
     process.exit(1);
   } finally {
     await desconectarDB();
+    process.exit(0); // Asegura que la terminal se libere al terminar
   }
 }
 

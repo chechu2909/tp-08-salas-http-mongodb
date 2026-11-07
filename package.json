@@ -3,13 +3,15 @@
   "version": "1.0.0",
   "description": "Trabajo práctico 08 - Conexión con MongoDB Atlas y API JSON",
   "main": "src/index.js",
-  "scripts": {
-    "start": "node src/index.js",
-    "dev": "node src/index.js",
+  
+    "scripts": {
+    "start": "node --env-file=.env src/index.js",
+    "dev": "node --env-file=.env src/index.js",
     "format": "prettier --write src",
     "format:check": "prettier --check src",
     "lint": "eslint src",
     "check": "npm run format:check && npm run lint"
+  
   },
   "dependencies": {
     "dotenv": "^18.0.9",

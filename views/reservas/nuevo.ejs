@@ -9,8 +9,8 @@
 
   <form action="/reservas" method="POST" novalidate>
     <div class="form-group">
-      <label for="persona">Nombre del Estudiante:</label>
-      <input type="text" id="persona" name="persona" value="<%= typeof valores !== 'undefined' && valores.persona ? valores.persona : '' %>" required>
+      <label for="estudiante">Nombre del Estudiante:</label>
+      <input type="text" id="estudiante" name="estudiante" value="<%= typeof valores !== 'undefined' && valores.estudiante ? valores.estudiante : '' %>" required>
     </div>
 
     <div class="form-group">
@@ -23,6 +23,11 @@
         <% }) %>
       </select>
     </div>
+
+<div class="mb-3">
+  <label for="email" class="form-label">Correo Electrónico:</label>
+  <input type="email" class="form-control" id="email" name="email" required placeholder="ejemplo@correo.com">
+</div>
 
     <div class="form-group">
       <label for="fecha">Fecha (YYYY-MM-DD):</label>

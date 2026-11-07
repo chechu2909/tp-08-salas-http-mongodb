@@ -94,7 +94,12 @@ ID válido inexistente,404 Not Found (JSON).
 Filtro exacto por sala (?sala=Sala%20Norte),200 OK — Retorna únicamente coincidencias exactas o [] si no hay.
 Parámetro de sala repetido (?sala=A&sala=B),400 Bad Request — Detecta el arreglo y rechaza la consulta.
 
-9. Prueba de Persistencia y Reinicio
+9. Componentes de Vistas (EJS)
+
+- **views/reservas/detalle.ejs**: Renderiza de manera estructurada los campos individuales de una reserva específica consultada por su ID (_id, estudiante, sala, fecha, turno, personas y estado), incluyendo un enlace de retorno al listado.
+- **views/estado.ejs**: Muestra el panel métrico general del sistema con el conteo dinámico del total de reservas almacenadas en la base de datos de MongoDB.
+
+10. Prueba de Persistencia y Reinicio
 
 Se consultó el listado mediante GET /api/reservas, registrando la cantidad inicial.
 

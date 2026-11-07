@@ -1,4 +1,4 @@
-const { Reserva } = require('../modelos/reservaModel');
+const { Reserva } = require("../modelos/reservaModel");
 
 const servicioReservas = {
   // Listar todas las reservas o filtrar por sala exacta si se proporciona
@@ -27,12 +27,12 @@ const servicioReservas = {
       fecha: nuevaReservaData.fecha,
       turno: nuevaReservaData.turno,
       personas: nuevaReservaData.personas,
-      estado: 'pendiente' // Default exigido
+      estado: "pendiente", // Default exigido
     };
 
     const nuevaReserva = new Reserva(reservaParaGuardar);
     return await nuevaReserva.save();
-  }
+  },
 };
 
 module.exports = servicioReservas;
