@@ -65,6 +65,72 @@ const controladorReservas = {
     }
   },
 
+  // NUEVO TP 09: Reemplazo completo (PUT)
+  actualizarTotalApi: async (req, res, next) => {
+    try {
+      const { id } = req.params;
+      if (!mongoose.Types.ObjectId.isValid(id)) {
+        return res.status(400).json({ error: "ID mal formado." });
+      }
+      if (!req.body || Object.keys(req.body).length === 0) {
+        return res.status(400).json({ error: "Cuerpo de la solicitud ausente o inválido." });
+      }
+
+      const resultado = await servicioReservas.reemplazar(id, req.body);
+      if (resultado.error) {
+        return res.status(resultado.status).json({ error: resultado.error });
+      }
+      return res.status(200).json(resultado.data);
+    } catch (error) {
+      if (error.name === "ValidationError") {
+        return res.status(400).json({ error: error.message });
+      }
+      next(error);
+    }
+  },
+
+  // NUEVO TP 09: Actualización parcial (PATCH)
+  actualizarParcialApi: async (req, res, next) => {
+    try {
+      const { id } = req.params;
+      if (!mongoose.Types.ObjectId.isValid(id)) {
+        return res.status(400).json({ error: "ID mal formado." });
+      }
+      if (!req.body || Object.keys(req.body).length === 0) {
+        return res.status(400).json({ error: "Cuerpo de la solicitud ausente o inválido." });
+      }
+
+      const resultado = await servicioReservas.actualizarParcial(id, req.body);
+      if (resultado.error) {
+        return res.status(resultado.status).json({ error: resultado.error });
+      }
+      return res.status(200).json(resultado.data);
+    } catch (error) {
+      if (error.name === "ValidationError") {
+        return res.status(400).json({ error: error.message });
+      }
+      next(error);
+    }
+  },
+
+  // NUEVO TP 09: Eliminación física (DELETE)
+  eliminarApi: async (req, res, next) => {
+    try {
+      const { id } = req.params;
+      if (!mongoose.Types.ObjectId.isValid(id)) {
+        return res.status(400).json({ error: "ID mal formado." });
+      }
+
+      const resultado = await servicioReservas.eliminar(id);
+      if (resultado.error) {
+        return res.status(resultado.status).json({ error: resultado.error });
+      }
+      return res.status(204).send();
+    } catch (error) {
+      next(error);
+    }
+  },
+
   // ==========================================
   // CONTROLADORES PARA VISTAS HTML / FORMULARIOS
   // ==========================================

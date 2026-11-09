@@ -1,0 +1,15 @@
+info:
+  name: actualizar reserva
+  type: http
+  seq: 1
+
+http:
+  method: PATCH
+  url: http://localhost:3000/api/reservas/6aef1c9a9dffff1ab0d2e868
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

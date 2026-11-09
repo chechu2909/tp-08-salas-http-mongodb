@@ -1,0 +1,15 @@
+info:
+  name: ID inexistente - No encontrado
+  type: http
+  seq: 1
+
+http:
+  method: GET
+  url: http://localhost:3000/api/reservas/6aef1ccb9dffff1ab0d2e999
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

@@ -9,7 +9,9 @@ router.get("/api/reservas", controladorReservas.listarApi);
 router.get("/api/reservas/:id", controladorReservas.obtenerPorIdApi);
 router.post("/api/reservas", controladorReservas.crearApi);
 
-// ============================================
+router.put('/api/reservas/:id', controladorReservas.actualizarTotalApi);
+router.patch('/api/reservas/:id', controladorReservas.actualizarParcialApi);
+router.delete('/api/reservas/:id', controladorReservas.eliminarApi);
 // ==========================================
 // RUTA DE VISTAS HTML Y FORMULARIOS
 // ==========================================
